@@ -1,5 +1,7 @@
-export default function BuildingAnAgent() {
-  const code = `from google.genai import types, Client
+import { useState, useEffect } from 'react'
+import { codeToHtml } from 'shiki'
+
+const code = `from google.genai import types, Client
 
 client = Client()
 conversations = []
@@ -14,7 +16,7 @@ while True:
     )
 
     completion = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model="gemini-2.0-flash",
         contents=conversations,
     )
 
@@ -27,11 +29,18 @@ while True:
         {"role": "model", "parts": content.content.parts}
     )`
 
+export default function BuildingAnAgent() {
+  const [highlighted, setHighlighted] = useState('')
+
+  useEffect(() => {
+    codeToHtml(code, { lang: 'python', theme: 'github-dark' }).then(setHighlighted)
+  }, [])
+
   return (
-    <div className="flex items-center gap-20 w-full">
+    <div className="flex items-start gap-16 w-full">
       {/* Left: Title */}
-      <div className="flex flex-col gap-4 shrink-0" style={{ width: 380 }}>
-        <h1 className="font-serif text-[52px] font-normal leading-tight tracking-tight text-black">
+      <div className="flex flex-col gap-4 shrink-0 pt-2" style={{ width: 340 }}>
+        <h1 className="font-serif text-[48px] font-normal leading-tight tracking-tight text-black">
           Building an Agent
         </h1>
         <p className="text-lg leading-relaxed text-neutral-400">
@@ -40,16 +49,17 @@ while True:
             token budget to spare.
           </span>
         </p>
-        <p className="text-lg leading-relaxed text-neutral-400">
-          That's really all there is to it.
-        </p>
       </div>
 
       {/* Right: Code block */}
-      <div className="flex flex-1 overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-900">
-        <pre className="w-full overflow-x-auto p-6 text-[13px] leading-relaxed text-neutral-300" style={{ fontFamily: '"JetBrains Mono", "Fira Code", monospace' }}>
-          {code}
-        </pre>
+      <div className="flex-1 min-w-0 overflow-hidden rounded-2xl border border-neutral-200 bg-[#24292e]">
+        <div className="px-4 py-2 text-[12px] text-neutral-400">
+          <span>python</span>
+        </div>
+        <div
+          className="overflow-auto px-4 pb-4 text-[13px] leading-relaxed [&_pre]:!m-0 [&_pre]:!p-0 [&_pre]:!bg-transparent"
+          dangerouslySetInnerHTML={{ __html: highlighted }}
+        />
       </div>
     </div>
   )

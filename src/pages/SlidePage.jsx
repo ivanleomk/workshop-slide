@@ -19,6 +19,9 @@ export default function SlidePage() {
 
   useEffect(() => {
     const onKey = (e) => {
+      const tag = e.target.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return
+
       if (e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault()
         goTo(index + 1)
@@ -81,7 +84,7 @@ export default function SlidePage() {
           </button>
         </div>
 
-        <span className="text-xs text-neutral-300">{slide.title}</span>
+        <div className="w-16" />
       </footer>
     </div>
   )
