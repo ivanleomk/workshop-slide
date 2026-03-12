@@ -5,11 +5,14 @@ import BuildingAnAgent from './04-building-an-agent'
 import WhyTools from './05-why-tools'
 import ToolsAreJustData from './06-tools-are-just-data'
 import ThatsAnAgent from './07-thats-an-agent'
-import ExtendingItself from './08-extending-itself'
-import HooksInAction from './09-hooks-in-action'
-import MemoryProblem from './10-memory-problem'
-import OpenClawMemory from './11-openclaw-memory'
-import MemoryFlush from './12-memory-flush'
+import Skills from './08-skills'
+import MCPs from './09-mcps'
+import CLITrend from './10-cli-trend'
+import ExtendingItself from './11-extending-itself'
+import HooksInAction from './12-hooks-in-action'
+import MemoryProblem from './13-memory-problem'
+import OpenClawMemory from './14-openclaw-memory'
+import MemoryFlush from './15-memory-flush'
 
 const slides = [
   {
@@ -53,6 +56,24 @@ const slides = [
     title: "That's it. That's an agent.",
     desc: 'A loop, tools, and the freedom to act.',
     component: ThatsAnAgent,
+  },
+  {
+    id: 'skills',
+    title: 'Skills are just prompts',
+    desc: 'Markdown files the agent loads on demand.',
+    component: Skills,
+  },
+  {
+    id: 'mcps',
+    title: 'MCPs are just pre-made tools',
+    desc: 'Same interface, someone else wrote it.',
+    component: MCPs,
+  },
+  {
+    id: 'cli-trend',
+    title: 'CLIs are eating MCPs',
+    desc: 'Zero token cost. The model already knows them.',
+    component: CLITrend,
   },
   {
     id: 'extending-itself',
