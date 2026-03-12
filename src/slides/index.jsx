@@ -13,6 +13,7 @@ import HooksInAction from './12-hooks-in-action'
 import MemoryProblem from './13-memory-problem'
 import OpenClawMemory from './14-openclaw-memory'
 import MemoryFlush from './15-memory-flush'
+import LetsBuild from './16-lets-build'
 
 const slides = [
   {
@@ -104,6 +105,12 @@ const slides = [
     title: 'Memory in practice',
     desc: 'Flush before you forget.',
     component: MemoryFlush,
+  },
+  {
+    id: 'lets-build',
+    title: "Let's look at the code.",
+    desc: '',
+    component: LetsBuild,
   },
 ]
 
