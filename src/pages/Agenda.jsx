@@ -18,6 +18,13 @@ export default function Agenda() {
         </h2>
         <p className="mt-3 text-lg text-neutral-400">A no-nonsense guide to how we can build agents with nothing but raw vanilla python</p>
 
+        <Link
+          to="/slides"
+          className="mt-6 inline-flex items-center gap-1.5 self-start rounded-full border border-neutral-300 bg-white px-5 py-2 text-sm font-medium text-neutral-900 shadow-sm hover:border-neutral-400 transition-colors"
+        >
+          Slides <span aria-hidden>→</span>
+        </Link>
+
         <div className="mt-12 flex flex-col">
           {items.map((item, i) => (
             <Link
